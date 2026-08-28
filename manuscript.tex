@@ -588,7 +588,7 @@ Intercept regime indicators are included across all econometric specifications.
 \subsection{Hansen (2000) Threshold Identification with Lagged Policy Rates}
 \label{sec:threshold_id}
 
-To mitigate contemporaneous simultaneity between monetary decisions and inflation, the optimal policy rate threshold $i^*$ is initially identified using the \textbf{lagged policy rate ($i_{t-1}$)} as the transition variable following the \citet{hansen2000} sample-splitting framework:
+To mitigate contemporaneous simultaneity between monetary decisions and inflation, the empirically estimated policy-rate switching threshold $i^*$ is identified using the \textbf{lagged policy rate ($i_{t-1}$)} as the transition variable following the \citet{hansen2000} sample-splitting framework:
 \begin{equation}
 \pi_t = X_t'\beta_1 \cdot \mathbb{I}(i_{t-1} \le i^*) + X_t'\beta_2 \cdot \mathbb{I}(i_{t-1} > i^*) + \varepsilon_t
 \label{eq:hansen_model}
@@ -603,7 +603,7 @@ values ($F_1 = 47.3$, $p_{\text{boot}} < 0.001$, $N_{\text{boot}} = 1{,}000$) yi
 Hansen 95\% confidence set $[18.5\%, 21.5\%]$. The sample splits into $N_{\text{Low}} = 138$
 observations ($i_{t-1} \le 20.0\%$) and $N_{\text{High}} = 46$ observations ($i_{t-1} > 20.0\%$).
 
-\textbf{Structural Identification vs.\ Devaluation Episodes.} A critical econometric inquiry is whether the estimated $i^* = 20.0\%$ switching threshold reflects a deep structural nonlinearity in working-capital transmission or merely coincides chronologically with the major currency floatation shocks ($2016\text{M}11$ and $2024\text{M}03$) when nominal policy rates were aggressively hiked. Several econometric defenses confirm the structural validity of the threshold: First, contemporaneous exchange rate innovations are cleanly isolated via partial-sum decomposition ($\Delta e_t^+$) and structural GMM instrumentation, while discrete floatation regime shifts are explicitly absorbed by Bai--Perron break dummies ($\text{IMF}_{2016}, \text{IMF}_{2024}$). Second, estimating the threshold model across the pre-2022 subsample ($2011\text{M}01$--$2021\text{M}12$, Table~\ref{tab:app_sensitivity}), which excludes the extreme post-2022 depreciation cycle, yields an invariant switching point of $i^* = 19.50\%$ ($W = 16.42, p < 0.001$). Third, the Leave-COVID-Out check and core inflation robustness confirm that the threshold is an intrinsic feature of domestic corporate credit dependencies rather than an artifact of external nominal shocks.
+\textbf{Structural Identification vs.\ Devaluation Episodes.} A critical econometric inquiry is whether the estimated $i^* = 20.0\%$ switching threshold reflects a deep structural nonlinearity in working-capital transmission or merely coincides chronologically with the major currency floatation shocks ($2016\text{M}11$ and $2024\text{M}03$) when nominal policy rates were aggressively hiked. Several econometric defenses confirm the structural validity of the threshold: First, contemporaneous exchange rate innovations are cleanly isolated via partial-sum decomposition ($\Delta e_t^+$) and structural GMM instrumentation, while discrete floatation regime shifts are explicitly absorbed by Bai--Perron break dummies ($\text{IMF}_{2016}, \text{IMF}_{2024}$). Second, estimating the threshold model across the pre-2022 subsample ($2011\text{M}01$--$2021\text{M}12$, Table~\ref{tab:app_sensitivity}), which excludes the extreme post-2022 depreciation cycle, yields an invariant switching point of $i^* = 19.50\%$ ($W = 16.42, p < 0.001$). Third, the Leave-COVID-Out check and core inflation robustness suggest that the estimated threshold is unlikely to be driven solely by the post-2022 depreciation cycle, pandemic disruptions, or headline-inflation measurement artifacts, underscoring its consistency with domestic corporate credit dependencies.
 
 \begin{figure}[htbp]
 \centering
@@ -635,12 +635,12 @@ observations ($i_{t-1} \le 20.0\%$) and $N_{\text{High}} = 46$ observations ($i_
 \addlegendentry{Hansen 5\% Critical Value}
 
 \node[font=\footnotesize, fill=white, draw=red!70, rounded corners=2pt]
-    at (axis cs:20,146){\textbf{Optimal $i^*=20.0\%$}};
+    at (axis cs:20,146){\textbf{Switching $i^*=20.0\%$}};
 \draw[red!70, dashed, line width=1.2pt](axis cs:20,125)--(axis cs:20,138.4);
 \end{axis}
 \end{tikzpicture}
 \caption{\citet{hansen2000} Threshold Identification using Lagged Policy Rate ($i_{t-1}$).
-The global minimum is $i^* = 20.0\%$, with 95\% bootstrap LR confidence interval $[18.5\%, 21.5\%]$.}
+The estimated switching point is $i^* = 20.0\%$, with 95\% bootstrap LR confidence interval $[18.5\%, 21.5\%]$.}
 \label{fig:threshold}
 \end{figure}
 
@@ -802,7 +802,7 @@ disinflationary responses.
 \end{axis}
 \end{tikzpicture}
 \caption{Asymmetric Dynamic Cumulative Multipliers with 90\% Bootstrap Confidence Bands.
-Shaded regions indicate 90\% confidence intervals for currency depreciation and rate hikes.}
+Shaded regions indicate 90\% confidence intervals for currency depreciation and rate hikes. Specifically, the $+3.12\text{ pp}$ peak at month 6 denotes the GMM structural cumulative multiplier, which is independently corroborated by the semi-parametric Local Projections \citep{jorda2005} peak of $+3.05\text{ pp}$ ($90\%\text{ CI: } [2.35, 3.75]$).}
 \label{fig:dynamic_multipliers}
 \end{figure}
 
@@ -1119,11 +1119,7 @@ the model provides a structural explanation consistent with the empirical Price 
 
 The Threshold Inversion Proposition establishes that interest rate hikes increase inflation
 when $i_{t-1} \le 20.0\%$ ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$), while aggregate demand
-contraction re-establishes disinflationary transmission above $20.0\%$. Exchange rate pass-through
-is strongly asymmetric ($\lambda^{+} = 8.2912, p = 0.002$). Machine learning models achieve
-superior forecasting performance ($\text{RMSE}=3.060\text{ pp}$) and recover a qualitatively similar
-non-linear dependence around $20.0\%$. These findings provide actionable roadmaps for central bank monetary
-policy sequencing and macroprudential credit management.
+contraction re-establishes disinflationary transmission above $20.0\%$. Exchange rate pass-through is strongly asymmetric ($\lambda^{+} = 8.2912, p = 0.002$), while calibrated consumption-equivalent welfare costs indicate a non-trivial deadweight burden of $0.84\%$ of annual household consumption expenditure. Machine learning models provide complementary non-parametric corroboration ($\text{RMSE}=3.060\text{ pp}$) recovering an inflection around $20.0\%$. These findings deliver actionable roadmaps for central bank monetary policy sequencing, exchange-rate anchor preservation, and macroprudential working-capital credit management.
 
 \section*{Data Availability Statement}
 All monthly datasets, replication scripts, and empirical routines are available
