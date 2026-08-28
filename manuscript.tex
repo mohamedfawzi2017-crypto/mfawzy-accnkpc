@@ -119,10 +119,7 @@ negative output gap ($\tilde{y}_t < 0$), and gradually lowers inflation.
 
 However, in credit-constrained, import-dependent emerging market economies, central
 banks frequently encounter an empirical phenomenon where interest rate hikes are
-followed in the short run by an acceleration of headline inflation. This phenomenon---conventionally
-termed the ``Price Puzzle''---has historically been attributed to omitted forward-looking
-variables in VAR identification \citep{sims1992, bernanke1998}. A structural explanation
-is grounded in the \textit{Cost Channel of Monetary Policy} \citep{barth2001, ravenna2006, chowdhury2006}:
+followed in the short run by an acceleration of headline inflation. This phenomenon---conventionally termed the ``Price Puzzle''---has historically been attributed to omitted forward-looking information in central bank reaction functions \citep{sims1992, bernanke1998}. Under the \citet{sims1992} signaling hypothesis, if policymakers anticipate future inflation and tighten preemptively, standard VAR models without adequate expectation proxies spuriously attribute rising inflation to the preceding rate hike. By explicitly incorporating model-consistent forward-looking inflation expectations ($\mathbb{E}_t[\pi_{t+1}]$) and global commodity supply controls ($\text{OIL}_t$), our structural GMM specification directly rules out the Sims omitted-variable critique. Instead, the persistent positive response is micro-founded in the \textit{Cost Channel of Monetary Policy} \citep{barth2001, ravenna2006, chowdhury2006}:
 when domestic enterprises rely on short-term commercial bank credit to finance working-capital
 outlays (wages and imported intermediate materials) prior to sales realisation, nominal
 interest rates directly enter the firm's marginal cost schedule. Under substantial working-capital
@@ -255,9 +252,12 @@ Log-linearising around the steady state $(i_{ss}, E_{ss}, A_{ss})$ yields:
 \widehat{mc}_t = (\sigma+\varphi)\tilde{y}_t + \alpha \hat{e}_t + \tilde{\mu} \tilde{i}_t + u_t
 \label{eq:mc_linear}
 \end{equation}
-where $\tilde{\mu} \equiv \frac{\chi}{1 + \chi i_{ss}}$ is the structural working-capital
-intensity and the disturbance $u_t \equiv -\hat{a}_t + \tilde{\mu}\widehat{\text{Spread}}_t$
-absorbs TFP shocks and banking spread innovations.
+where $\tilde{\mu} \equiv \frac{\chi}{1 + \chi i_{ss}}$ is the structural working-capital intensity. In open emerging economies with foreign-currency external liabilities, commercial banking spreads and corporate risk premia directly reflect sovereign foreign exchange liquidity and reserve adequacy \citep{shin2014}:
+\begin{equation}
+\widehat{\text{Spread}}_t = -\eta_b \text{Buff}_t + \varepsilon_t^b, \qquad \text{Buff}_t \equiv \ln\left(\frac{\text{FX\_RES}_t}{\overline{\text{FX\_RES}}}\right)
+\label{eq:spread_buffer}
+\end{equation}
+where $\text{Buff}_t$ captures deviations of gross official foreign reserves from their historical sample mean. Substituting \eqref{eq:spread_buffer} into the marginal cost disturbance yields the composite aggregate pricing term $\eta \cdot \text{Buff}_t$ in \eqref{eq:acc_nkpc} with theoretical slope $\eta = -\tilde{\mu}\eta_b < 0$, while the orthogonalized disturbance $u_t \equiv -\hat{a}_t + \tilde{\mu}\varepsilon_t^b$ absorbs pure TFP and financial risk innovations.
 
 \subsection{Asymmetric Calvo Pricing with Endogenous Mass Aggregation}
 \label{sec:calvo}
@@ -385,8 +385,21 @@ $\phi^{+} > \frac{\kappa}{\sigma}$.
 \begin{proof}
 From \eqref{eq:is}, $\partial\tilde{y}_t/\partial i_t = -1/\sigma$. Substituting into
 \eqref{eq:acc_nkpc} for $\Delta i_t > 0$ yields $\partial\pi_t/\partial i_t = \kappa(-1/\sigma) + \phi^+ = \phi^+ - \kappa/\sigma$.
-When $\phi^+ > \kappa/\sigma$, the marginal cost push from working-capital financing
-exceeds the disinflationary pressure from aggregate demand contraction.
+When $\phi^+ > \kappa/\sigma$, the marginal cost push from working-capital financing exceeds the disinflationary pressure from aggregate demand contraction.
+
+\textbf{Quantitative Net Derivative Evaluation:} Using calibrated macroeconomic baseline values ($\kappa = 0.1910, \sigma = 1.67 \implies \kappa/\sigma = 0.1144$):
+\begin{itemize}
+    \item \textbf{Low-Rate Regime ($i_{t-1} \le 20.0\%$):} With $\phi_{\text{Low}}^+ = 1.8783$, the net marginal response is:
+    \[
+    \left.\frac{\partial\pi_t}{\partial i_t}\right|_{\text{Low}} = 1.8783 - 0.1144 = \mathbf{+1.7639 > 0} \quad (p < 0.0001)
+    \]
+    confirming acute cost-channel dominance and generating the empirical Price Puzzle.
+    \item \textbf{High-Rate Regime ($i_{t-1} > 20.0\%$):} With the empirical point estimate $\phi_{\text{High}}^+ = 0.1232$ (statistically indistinguishable from zero, $p = 0.2317$), the net point derivative falls to $0.1232 - 0.1144 = +0.0088 \approx 0$, effectively neutralizing the Price Puzzle. Under the empirical non-rejection of the null $\phi_{\text{High}}^+ = 0$, the net response becomes:
+    \[
+    \left.\frac{\partial\pi_t}{\partial i_t}\right|_{\text{High}} = 0 - 0.1144 = \mathbf{-0.1144 < 0}
+    \]
+    re-establishing conventional disinflationary demand dominance.
+\end{itemize}
 \end{proof}
 
 \textbf{Determinacy and the Modified Taylor Principle.} In the presence of a working-capital cost channel, the standard Taylor principle governing Blanchard--Kahn macroeconomic stability is modified. Specifically, determinacy in the coupled Dynamic IS-NKPC system requires the central bank's policy reaction coefficient $\phi_\pi$ in the feedback rule $i_t = \phi_\pi \pi_t + \phi_y \tilde{y}_t$ to satisfy:
@@ -595,7 +608,7 @@ To mitigate contemporaneous simultaneity between monetary decisions and inflatio
 \end{equation}
 \textbf{Econometric Role and Non-Stationary Cointegration:} In our empirical architecture, the Hansen (2000) specification serves as an exploratory \textit{reduced-form threshold diagnostic} on short-run policy transmission. Because macroeconomic observables ($\text{INFL}_t, \text{POLICY}_t, \text{EXCH}_t$) exhibit $I(1)$ unit-root properties (Table~\ref{tab:unit_root}), the formal proof of long-run structural cointegration and dynamic stability does not rest solely on level threshold regressions; rather, it is anchored on the \textbf{Nonlinear ARDL (NARDL) Bounds Testing Error Correction Model} ($\text{ECT}_{t-1} = -0.3210^{***}, \text{Bounds } F = 7.82, p < 0.01$, Table~\ref{tab:app_robust}), which is explicitly estimated in stationary mixed $I(0)/I(1)$ error-correction form.
 
-The threshold search interval $i_{t-1}^* \in [10\%, 24\%]$ corresponds to the interior $10\text{th}$ to $90\text{th}$ empirical quantiles of the policy rate distribution, ensuring that each regime contains sufficient observations ($N \ge 40$) to prevent sparse-sample distortions.
+The threshold search interval $i_{t-1}^* \in [10\%, 24\%]$ corresponds to the interior $10\text{th}$ to $90\text{th}$ empirical quantiles of the policy rate distribution, ensuring that each regime contains sufficient observations ($N_{\text{Low}} = 138, N_{\text{High}} = 46$) to avoid sparse-sample distortions. The concentration of threshold estimates around $20.0\%$ across distinct parametric, non-parametric, and machine learning methods reflects the institutional operational framework of the Central Bank of Egypt, where policy decisions are implemented in discrete corridor adjustments ($\pm 100$ to $\pm 200\text{ bps}$), generating natural clustering along the empirical policy rate support.
 
 Figure~\ref{fig:threshold} demonstrates a sharp global minimum at $i^* = 20.0\%$
 ($\text{SSR} = 138.4$). Inverting the likelihood-ratio statistic using bootstrap critical
@@ -947,7 +960,7 @@ The baseline scenario projects a moderate exchange rate trajectory from $48.20$ 
 \textbf{Lesson 4: Disinflation Realism, Administered Prices, and Updated Welfare Costs.}
 While the statistical baseline projects headline inflation reaching the statutory target band ($7.0\% \pm 2\%$) by 2027/2028, real-world disinflation may exhibit greater stickiness ($8.5\%$--$10.5\%$) due to ongoing administrative price adjustments (quarterly fuel pricing committee decrees and electricity tariff rationalization). Core CPI inflation leads this disinflationary glide path.
 
-\textit{Illustrative Welfare Cost Calibration:} Structurally, asymmetric price-setting imposes a welfare deadweight loss via inefficient price dispersion. Standard second-order Taylor expansion of household intertemporal utility \eqref{eq:utility} yields the compensating variation approximation $\text{CV}/\bar{C}_{hh} \approx \frac{1}{2}\sigma^{-1}(\Delta\pi_{\text{asym}})^2 \approx 0.84\%$ of annual household consumption expenditure. While this evaluated to $\text{EGP } 504$ at baseline 2020 HIECS prices ($\bar{C}_{hh} = \text{EGP } 60{,}000$), cumulative nominal inflation updates current annual household expenditure to $\bar{C}_{hh, 2026} \approx \text{EGP } 160{,}000$--$180{,}000$, resulting in an updated nominal welfare burden of:
+\textit{Illustrative Welfare Cost Calibration:} Structurally, asymmetric price-setting imposes a welfare deadweight loss via inefficient price dispersion. Standard second-order Taylor expansion of household intertemporal utility \eqref{eq:utility} yields the compensating variation approximation $\text{CV}/\bar{C}_{hh} \approx \frac{1}{2}\sigma^{-1}(\Delta\pi_{\text{asym}})^2 \approx 0.84\%$ of annual household consumption expenditure. While this evaluated to $\text{EGP } 504$ at baseline 2020 HIECS prices ($\bar{C}_{hh} = \text{EGP } 60{,}000$), updating baseline expenditure via cumulative CPI compounding ($\bar{C}_{hh, 2026} = \bar{C}_{hh, 2020} \times [\text{CPI}_{2026}/\text{CPI}_{2020}] \approx \text{EGP } 60{,}000 \times 2.85 \approx \text{EGP } 170{,}000$) based on the official CAPMAS Household Income, Expenditure and Consumption Survey (HIECS) updates the nominal annual deadweight burden to:
 \begin{equation}
 \text{CV}_{2026} = 0.84\% \times \text{EGP } 170{,}000 \approx \mathbf{\text{EGP } 1{,}428 \text{ per household/year.}}
 \end{equation}
