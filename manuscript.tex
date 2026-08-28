@@ -74,17 +74,18 @@ and working-capital borrowing constraints ($\chi$), we micro-found state-depende
 Calvo pricing ($\theta^+ \neq \theta^-$). Second, we derive the \textit{Threshold Inversion
 Proposition} ($\phi^+ > \kappa/\sigma$) establishing the structural condition under which the
 cost channel dominates the aggregate demand channel. Using the \citet{hansen2000} threshold
-framework with lagged policy rates ($i_{t-1}$) to eliminate contemporaneous endogeneity across
+framework with lagged policy rates ($i_{t-1}$) to mitigate contemporaneous simultaneity across
 the empirical $10\%$--$90\%$ distribution support, we identify an empirical switching point of
 $i^* = 20.0\%$ (Hansen likelihood-ratio 95\% confidence set: $[18.5\%,\;21.5\%]$). Conditional
-on macroeconomic calibration, implied Calvo stickiness is $\theta^+ \approx 0.62$ ($2.6$ months)
-for upward adjustments versus $\theta^- \approx 0.88$ ($8.3$ months) for downward adjustments,
+on macroeconomic calibration, implied Calvo stickiness is $\theta^+ = 0.548$ ($2.2$ months)
+for upward adjustments versus $\theta^- = 0.832$ ($6.0$ months) for downward adjustments,
 consistent with a ``Rockets and Feathers'' pricing pattern. Third, structural Two-Step Optimal
 GMM and HAC-OLS estimates on monthly Egyptian data spanning $2011\text{M}01$--$2026\text{M}04$ ($T=184$)
 show that interest rate hikes transmit positively to inflation below the threshold
 ($\phi_{\text{Low}}^{+} = 1.8783,\; p < 0.001$), while exchange rate pass-through is strongly
-asymmetric ($\lambda^{+} = 8.2912,\; p = 0.002$). Results are robust across extensive IV
-exclusion checks (omitting oil prices, IMF dummies, and spread proxies; Kleibergen--Paap $F = 28.4$,
+asymmetric ($\lambda^{+} = 8.2912,\; p = 0.002$). Results are robust across a set of theory-motivated
+external instruments with documented relevance and sensitivity to alternative exclusion sets
+(omitting oil prices, IMF dummies, and spread proxies; Kleibergen--Paap $F = 28.4$,
 Hansen $J$ $p = 0.512$), alternative \citet{hamilton2018} activity gap proxies, polynomial
 specifications, linear splines, and full Nonlinear ARDL (NARDL) error correction models
 ($\text{ECT}_{t-1} = -0.3210^{***}, \text{Bounds } F = 7.82, p < 0.01$). Fourth, machine learning
@@ -163,7 +164,7 @@ and empirical inflation persistence.
 \item \textbf{Threshold Inversion Proposition:} We formally derive the mathematical
 condition under which the cost channel dominates ($\phi^+ > \kappa/\sigma$) and identify
 the empirical threshold at $i^* = 20.0\%$ using \citet{hansen2000} threshold methods
-with lagged policy rates ($i_{t-1}$) to prevent contemporaneous endogeneity.
+with lagged policy rates ($i_{t-1}$) to mitigate contemporaneous simultaneity.
 \item \textbf{Robust Econometric Identification:} We estimate the structural equation
 via Two-Step Optimal GMM and HAC-OLS, utilizing theory-motivated external instruments
 (US Federal Funds rate, global commodity prices, banking spreads, IMF dummies; Kleibergen--Paap
@@ -324,12 +325,17 @@ Table~\ref{tab:calibration} summarizes the macroeconomic calibration and structu
 \phi_m^{-} = \frac{\phi_{\text{empirical}}^{-}}{12} = \frac{0.1733}{12} \approx 0.0144
 \label{eq:scaling_identity}
 \end{equation}
-Setting structural parameters to baseline calibration ($\beta = 0.995, \sigma = 1.67, \varphi = 2.0$, import share $\alpha = 0.35$, steady-state policy rate $i_{ss} = 12.0\%$, loan share $\chi = 0.65 \implies \tilde{\mu} = 0.603$, and $\gamma = 0.450$), inverting the structural quadratic slope expression in \eqref{eq:slopes} for $\phi_m^{+} = 0.1565$ and $\phi_m^{-} = 0.0144$ yields:
+Setting structural parameters to baseline calibration ($\beta = 0.995, \sigma = 1.67, \varphi = 2.0$, import share $\alpha = 0.35$, steady-state policy rate $i_{ss} = 12.0\%$, loan share $\chi = 0.65 \implies \tilde{\mu} = 0.603$, and price indexation $\gamma = 0.450 \implies 1+\beta\gamma = 1.4478$), inverting the structural quadratic slope expression \eqref{eq:slopes} numerically:
+\begin{equation}
+\frac{(1-\theta)(1-\beta\theta)}{\theta(1+\beta\gamma)}\tilde{\mu} = \phi_m \implies 0.995\theta^2 - \left(1.995 + \frac{1.4478}{\tilde{\mu}}\phi_m\right)\theta + 1 = 0
+\label{eq:quadratic_inversion}
+\end{equation}
+Solving \eqref{eq:quadratic_inversion} for $\phi_m^{+} = 0.1565$ and $\phi_m^{-} = 0.0144$ yields the exact structural Calvo probabilities:
 \begin{itemize}
-    \item \textbf{Upward Price Stickiness:} $\theta^{+} = 0.620 \implies$ implied average upward price duration $d^{+} = \frac{1}{1-\theta^{+}} = 2.63\text{ months}$.
-    \item \textbf{Downward Price Stickiness:} $\theta^{-} = 0.880 \implies$ implied average downward price duration $d^{-} = \frac{1}{1-\theta^{-}} = 8.33\text{ months}$.
+    \item \textbf{Upward Price Stickiness:} $\theta^{+} = 0.548 \implies$ implied average upward price duration $d^{+} = \frac{1}{1-\theta^{+}} = 2.21\text{ months}$ ($\approx 9.6\text{ weeks}$).
+    \item \textbf{Downward Price Stickiness:} $\theta^{-} = 0.832 \implies$ implied average downward price duration $d^{-} = \frac{1}{1-\theta^{-}} = 5.95\text{ months}$ ($\approx 25.8\text{ weeks}$).
 \end{itemize}
-This provides rigorous structural evidence consistent with a ``Rockets and Feathers'' pricing pattern: domestic enterprises adjust prices upward in response to cost increases in under 3 months ($d^+ = 2.63$), while requiring more than 8 months ($d^- = 8.33$) to pass through cost reductions.
+This provides mathematically exact, rigorous structural evidence consistent with a ``Rockets and Feathers'' pricing pattern: domestic enterprises adjust prices upward in response to cost increases in approximately $2.2$ months ($d^+ = 2.21$), while requiring nearly three times as long ($d^- = 5.95\text{ months}$) to pass through cost reductions.
 
 \begin{table}[htbp]
 \centering
@@ -351,13 +357,13 @@ Steady-State Policy Rate & $i_{ss}$ & $0.12$ & Sample mean CBE corridor midpoint
 Working-Capital Intensity & $\tilde{\mu}$ & $0.603$ & Computed: $\tilde{\mu} = \chi / (1 + \chi i_{ss})$ \\
 Price Indexation Parameter & $\gamma$ & $0.450$ & Empirical backward inflation persistence weight \\
 \midrule
-\textbf{Implied Calvo Parameter ($\theta^+$)} & $\theta^+$ & $\mathbf{0.620}$ & Inverted from $\phi_{\text{Low}}^+ = 1.8783$ ($d^+ = 2.63\text{ months}$) \\
-\textbf{Implied Calvo Parameter ($\theta^-$)} & $\theta^-$ & $\mathbf{0.880}$ & Inverted from $\phi^- = 0.1733$ ($d^- = 8.33\text{ months}$) \\
+\textbf{Implied Calvo Parameter ($\theta^+$)} & $\theta^+$ & $\mathbf{0.548}$ & Inverted from $\phi_m^+ = 0.1565$ ($d^+ = 2.21\text{ months}$) \\
+\textbf{Implied Calvo Parameter ($\theta^-$)} & $\theta^-$ & $\mathbf{0.832}$ & Inverted from $\phi_m^- = 0.0144$ ($d^- = 5.95\text{ months}$) \\
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Note:} Calvo parameters $\theta^+$ and $\theta^-$ are inverted using the monthly frequency scaling identity $\phi_m = \phi_{\text{empirical}} / 12$ on annualized empirical slopes. In empirical estimations (Table~\ref{tab:acc_nkpc_results}), forward ($\gamma_f$) and backward ($\gamma_b$) weights are freely estimated via GMM without imposing theoretical cross-equation restrictions, revealing an empirical backward indexation ratio $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$ while summing to $0.963 \approx 1$.
+\item \textit{Note:} Calvo parameters $\theta^+$ and $\theta^-$ are exact numerical roots of the structural quadratic equation \eqref{eq:quadratic_inversion} using monthly frequency scaling $\phi_m = \phi_{\text{empirical}} / 12$. In empirical estimations (Table~\ref{tab:acc_nkpc_results}), forward ($\gamma_f$) and backward ($\gamma_b$) weights are treated as empirical hybrid weights freely estimated via GMM without imposing theoretical cross-equation restrictions, revealing an empirical indexation ratio $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$ while summing to $0.963 \approx 1$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -658,7 +664,7 @@ rejects linearity: $W = 19.84$ ($p < 0.0001$).
 strongly positive and significant: $\lambda^{+} = 8.2912$ ($t = 3.15, p = 0.002$), whereas
 appreciation pass-through ($\lambda^{-}$) is statistically indistinguishable from zero ($p = 0.703$).
 A Wald test confirms significant pass-through asymmetry: $W = 8.72$ ($p = 0.0031$).
-\item \textbf{Hybrid Dynamics & Empirical Indexation:} Forward-looking expectations ($\gamma_f = 0.5210, p < 0.001$) and backward persistence ($\gamma_b = 0.4420, p < 0.001$) are freely estimated without imposing theoretical restrictions, summing to $0.9630 \approx 1$. The estimated ratio implies an empirical backward indexation degree of $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$, indicating substantial real-world price stickiness and intrinsic inflation persistence in the Egyptian economy.
+\item \textbf{Hybrid Dynamics & Empirical Hybrid Weights:} Forward-looking expectations ($\gamma_f = 0.5210, p < 0.001$) and backward persistence ($\gamma_b = 0.4420, p < 0.001$) are freely estimated as empirical hybrid weights without imposing theoretical cross-equation restrictions, summing to $0.9630 \approx 1$. The estimated ratio implies an empirical backward indexation degree of $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$, indicating substantial real-world price stickiness and intrinsic inflation persistence in the Egyptian economy.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -1322,7 +1328,7 @@ Rearranging terms to isolate contemporaneous inflation $\pi_t$ yields:
 \begin{equation}
 (1 + \beta\gamma) \pi_t = \beta \mathbb{E}_t[\pi_{t+1}] + \gamma \pi_{t-1} + \frac{(1-\theta)(1-\beta\theta)}{\theta} \widehat{mc}_t
 \end{equation}
-Dividing through by $(1 + \beta\gamma)$ and aggregating over optimal reset prices $p_t^{*+}$ (for positive cost shock mass $\omega_t$) and $p_t^{*-}$ (for mass $1-\omega_t$) yields the structural Hybrid ACC-NKPC \eqref{eq:acc_nkpc} with structural weights:
+Dividing through by $(1 + \beta\gamma)$ and aggregating over optimal reset prices $p_t^{*+}$ (for positive cost shock mass $\omega_t$) and $p_t^{*-}$ (for mass $1-\omega_t$) yields the structural Hybrid ACC-NKPC \eqref{eq:acc_nkpc} with theoretical weights:
 \begin{equation}
 \gamma_f = \frac{\beta}{1+\beta\gamma}, \qquad \gamma_b = \frac{\gamma}{1+\beta\gamma}, \qquad \kappa = \frac{(1-\theta^+)(1-\beta\theta^+)}{\theta^+(1+\beta\gamma)}(\sigma+\varphi)
 \end{equation}
