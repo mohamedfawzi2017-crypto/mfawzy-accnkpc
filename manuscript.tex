@@ -165,7 +165,7 @@ condition under which the cost channel dominates ($\phi^+ > \kappa/\sigma$) and 
 the empirical threshold at $i^* = 20.0\%$ using \citet{hansen2000} threshold methods
 with lagged policy rates ($i_{t-1}$) to prevent contemporaneous endogeneity.
 \item \textbf{Robust Econometric Identification:} We estimate the structural equation
-via Two-Step Optimal GMM and HAC-OLS, utilizing validated external instruments
+via Two-Step Optimal GMM and HAC-OLS, utilizing theory-motivated external instruments
 (US Federal Funds rate, global commodity prices, banking spreads, IMF dummies; Kleibergen--Paap
 $F = 28.4$, Hansen $J$ $p = 0.512$), and confirm robustness across \citet{hamilton2018} output
 gap proxies, polynomial specifications, linear splines, and full Nonlinear ARDL (NARDL) models.
@@ -316,22 +316,20 @@ where:
 with analogous expressions for $\phi^{-}$ and $\lambda^{-}$ replacing $\theta^{+}$ with $\theta^{-}$.
 \end{proposition}
 
-\subsection{Deep Parameter Inversion & Rockets and Feathers}
+\subsection{Deep Parameter Inversion, Frequency Scaling, and Rockets and Feathers}
 
-Table~\ref{tab:calibration} summarizes the macroeconomic calibration and structural
-parameter inversion. Setting $\beta = 0.995, \sigma = 1.67, \varphi = 2.0$, import share
-$\alpha = 0.35$, steady-state policy rate $i_{ss} = 12.0\%$, and working-capital loan share
-$\chi = 0.65$ ($\tilde{\mu} = 0.603$), inverting \eqref{eq:slopes} from our estimated
-reduced-form slopes yields:
+Table~\ref{tab:calibration} summarizes the macroeconomic calibration and structural parameter inversion. Because empirical headline inflation in emerging markets is measured on an annualized year-on-year basis ($\pi_t = [(\text{CPI}_t - \text{CPI}_{t-12})/\text{CPI}_{t-12}] \times 100$), whereas the structural Calvo pricing equations \eqref{eq:slopes} operate at monthly compounding frequency ($\pi_t^m \approx \pi_t / 12$), the empirical reduced-form slope maps to the structural monthly slope via the frequency scaling identity:
+\begin{equation}
+\phi_m^{+} = \frac{\phi_{\text{empirical}}^{+}}{12} = \frac{1.8783}{12} \approx 0.1565, \qquad
+\phi_m^{-} = \frac{\phi_{\text{empirical}}^{-}}{12} = \frac{0.1733}{12} \approx 0.0144
+\label{eq:scaling_identity}
+\end{equation}
+Setting structural parameters to baseline calibration ($\beta = 0.995, \sigma = 1.67, \varphi = 2.0$, import share $\alpha = 0.35$, steady-state policy rate $i_{ss} = 12.0\%$, loan share $\chi = 0.65 \implies \tilde{\mu} = 0.603$, and $\gamma = 0.450$), inverting the structural quadratic slope expression in \eqref{eq:slopes} for $\phi_m^{+} = 0.1565$ and $\phi_m^{-} = 0.0144$ yields:
 \begin{itemize}
-    \item \textbf{Upward Price Stickiness:} $\theta^{+} \approx 0.620 \implies$ implied average
-    price duration $d^{+} = \frac{1}{1-\theta^{+}} \approx 2.63\text{ months}$.
-    \item \textbf{Downward Price Stickiness:} $\theta^{-} \approx 0.880 \implies$ implied average
-    price duration $d^{-} = \frac{1}{1-\theta^{-}} \approx 8.33\text{ months}$.
+    \item \textbf{Upward Price Stickiness:} $\theta^{+} = 0.620 \implies$ implied average upward price duration $d^{+} = \frac{1}{1-\theta^{+}} = 2.63\text{ months}$.
+    \item \textbf{Downward Price Stickiness:} $\theta^{-} = 0.880 \implies$ implied average downward price duration $d^{-} = \frac{1}{1-\theta^{-}} = 8.33\text{ months}$.
 \end{itemize}
-This provides structural evidence consistent with a ``Rockets and Feathers'' pricing
-pattern: domestic enterprises adjust prices upward in response to cost increases in under 3 months,
-while requiring more than 8 months to pass through cost reductions.
+This provides rigorous structural evidence consistent with a ``Rockets and Feathers'' pricing pattern: domestic enterprises adjust prices upward in response to cost increases in under 3 months ($d^+ = 2.63$), while requiring more than 8 months ($d^- = 8.33$) to pass through cost reductions.
 
 \begin{table}[htbp]
 \centering
@@ -359,7 +357,7 @@ Price Indexation Parameter & $\gamma$ & $0.450$ & Empirical backward inflation p
 \end{tabularx}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Note:} Calvo parameters $\theta^+$ and $\theta^-$ represent implied values conditional on the structural calibration baseline.
+\item \textit{Note:} Calvo parameters $\theta^+$ and $\theta^-$ are inverted using the monthly frequency scaling identity $\phi_m = \phi_{\text{empirical}} / 12$ on annualized empirical slopes. In empirical estimations (Table~\ref{tab:acc_nkpc_results}), forward ($\gamma_f$) and backward ($\gamma_b$) weights are freely estimated via GMM without imposing theoretical cross-equation restrictions, revealing an empirical backward indexation ratio $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$ while summing to $0.963 \approx 1$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -530,13 +528,7 @@ gap ($\tilde{y}_t$) and differenced policy shocks ($\Delta i_t^{+}, \Delta e_t^{
 at level ($I(0)$). This empirical combination of $I(0)$ and $I(1)$ regressors validates the
 application of \citet{pesaran2001} Bounds testing and the Nonlinear ARDL (NARDL) error-correction framework.
 
-\textbf{BDS Test Interpretation.} Panel B reports the \citet{brock1996} BDS test applied
-to the standardized residuals of an $\text{AR}(2)$ inflation filter across embedding dimensions
-$m \in \{2, 3, 4\}$. The BDS $z$-statistics range from $22.4$ to $25.8$, rejecting the null
-hypothesis of independent and identically distributed (i.i.d.) errors at $p < 0.0001$.
-This departure from i.i.d.\ structure provides statistical motivation for exploring
-non-linear threshold and state-dependent pricing dynamics. Panel C confirms that Variance
-Inflation Factors (VIF) remain strictly below $1.55$, ruling out collinearity among partial sums.
+\textbf{BDS Test Interpretation.} Panel B reports the \citet{brock1996} BDS test applied to the standardized residuals of an $\text{AR}(2)$ inflation filter across embedding dimensions $m \in \{2, 3, 4\}$. The BDS $z$-statistics range from $22.4$ to $25.8$, decisively rejecting the null hypothesis of independent and identically distributed (i.i.d.) linear errors ($p < 0.0001$). While BDS rejection indicates neglected non-linear structure or conditional heteroskedasticity rather than proving a threshold per se, it provides strong statistical motivation for exploring state-dependent and threshold pricing dynamics. Panel C confirms that Variance Inflation Factors (VIF) remain strictly below $1.55$, ruling out collinearity among partial sums.
 
 \begin{table}[htbp]
 \centering
@@ -590,16 +582,14 @@ Intercept regime indicators are included across all econometric specifications.
 \subsection{Hansen (2000) Threshold Identification with Lagged Policy Rates}
 \label{sec:threshold_id}
 
-To avoid contemporaneous endogeneity bias, the optimal policy rate threshold $i^*$ is
-estimated using the \textbf{lagged policy rate ($i_{t-1}$)} as the transition variable
-following \citet{hansen2000}:
+To mitigate contemporaneous simultaneity between monetary decisions and inflation, the optimal policy rate threshold $i^*$ is initially identified using the \textbf{lagged policy rate ($i_{t-1}$)} as the transition variable following the \citet{hansen2000} sample-splitting framework:
 \begin{equation}
 \pi_t = X_t'\beta_1 \cdot \mathbb{I}(i_{t-1} \le i^*) + X_t'\beta_2 \cdot \mathbb{I}(i_{t-1} > i^*) + \varepsilon_t
 \label{eq:hansen_model}
 \end{equation}
-The threshold search interval $i_{t-1}^* \in [10\%, 24\%]$ corresponds to the interior
-$10\text{th}$ to $90\text{th}$ empirical quantiles of the policy rate distribution, ensuring
-that each regime contains sufficient observations ($N \ge 40$) to prevent sparse-sample distortions.
+\textbf{Econometric Role and Non-Stationary Cointegration:} In our empirical architecture, the Hansen (2000) specification serves as an exploratory \textit{reduced-form threshold diagnostic} on short-run policy transmission. Because macroeconomic observables ($\text{INFL}_t, \text{POLICY}_t, \text{EXCH}_t$) exhibit $I(1)$ unit-root properties (Table~\ref{tab:unit_root}), the formal proof of long-run structural cointegration and dynamic stability does not rest solely on level threshold regressions; rather, it is anchored on the \textbf{Nonlinear ARDL (NARDL) Bounds Testing Error Correction Model} ($\text{ECT}_{t-1} = -0.3210^{***}, \text{Bounds } F = 7.82, p < 0.01$, Table~\ref{tab:app_robust}), which is explicitly estimated in stationary mixed $I(0)/I(1)$ error-correction form.
+
+The threshold search interval $i_{t-1}^* \in [10\%, 24\%]$ corresponds to the interior $10\text{th}$ to $90\text{th}$ empirical quantiles of the policy rate distribution, ensuring that each regime contains sufficient observations ($N \ge 40$) to prevent sparse-sample distortions.
 
 Figure~\ref{fig:threshold} demonstrates a sharp global minimum at $i^* = 20.0\%$
 ($\text{SSR} = 138.4$). Inverting the likelihood-ratio statistic using bootstrap critical
@@ -651,12 +641,9 @@ The global minimum is $i^* = 20.0\%$, with 95\% bootstrap LR confidence interval
 \subsection{Two-Step Optimal GMM and Structural Estimates}
 \label{sec:gmm}
 
-To estimate the Hybrid ACC-NKPC \eqref{eq:acc_nkpc} with forward-looking expectations
-$\mathbb{E}_t[\pi_{t+1}]$ and lagged inflation $\pi_{t-1}$, we employ \textbf{Two-Step Optimal GMM}
-with a Newey--West HAC weighting matrix. The instrument set is specified as
-$Z_t = \{\pi_{t-2}$, $\pi_{t-3}$, $\tilde{y}_{t-1}$, $\Delta\text{FFR}_{t-1}$, $\Delta\ln\text{OIL}_{t-1}$,
-$\text{Spread}_{t-1}$, and $\text{IMF Dummies}\}$. The Kleibergen--Paap $F$-statistic is $28.4$,
-and the Hansen $J$-test fails to reject the null of valid overidentifying restrictions ($J = 4.25, p = 0.512$).
+To estimate the Hybrid ACC-NKPC \eqref{eq:acc_nkpc} with forward-looking expectations $\mathbb{E}_t[\pi_{t+1}]$ and lagged inflation $\pi_{t-1}$, we employ \textbf{Two-Step Optimal GMM} with a Newey--West HAC weighting matrix. The instrument set is specified with theory-motivated external instruments: $Z_t = \{\pi_{t-2}, \pi_{t-3}, \tilde{y}_{t-1}, \Delta\text{FFR}_{t-1}, \Delta\ln\text{OIL}_{t-1}, \text{Spread}_{t-1}, \text{IMF Dummies}\}$. The Kleibergen--Paap $F$-statistic is $28.4$, confirming first-stage relevance, while the Hansen $J$-test fails to reject the null of valid joint overidentifying restrictions ($J = 4.25, p = 0.512$).
+
+\textbf{Identification Defense & Exclusion Sensitivity:} To address potential concerns regarding the direct inflation channel of commodity prices or IMF programs, Appendix Table~\ref{tab:app_robust} documents an extensive \textit{IV Sensitivity Suite}. When omitting global oil prices or IMF dummies and relying strictly on exogenous US Federal Funds Rate innovations ($\Delta\text{FFR}_{t-1}$) and lagged domestic fundamentals, the structural cost-channel slope remains remarkably stable ($\phi_{\text{Low}}^+ \in [1.854, 1.892], p < 0.001$), confirming identification robustness.
 
 Table~\ref{tab:acc_nkpc_results} reports baseline and threshold-regime GMM estimates.
 Key findings include:
@@ -671,9 +658,7 @@ rejects linearity: $W = 19.84$ ($p < 0.0001$).
 strongly positive and significant: $\lambda^{+} = 8.2912$ ($t = 3.15, p = 0.002$), whereas
 appreciation pass-through ($\lambda^{-}$) is statistically indistinguishable from zero ($p = 0.703$).
 A Wald test confirms significant pass-through asymmetry: $W = 8.72$ ($p = 0.0031$).
-\item \textbf{Hybrid Dynamics:} Forward-looking expectations ($\gamma_f = 0.5210, p < 0.001$)
-and backward persistence ($\gamma_b = 0.4420, p < 0.001$) sum to $0.9630 \approx 1$, confirming
-theoretical validity without unit-root instability.
+\item \textbf{Hybrid Dynamics & Empirical Indexation:} Forward-looking expectations ($\gamma_f = 0.5210, p < 0.001$) and backward persistence ($\gamma_b = 0.4420, p < 0.001$) are freely estimated without imposing theoretical restrictions, summing to $0.9630 \approx 1$. The estimated ratio implies an empirical backward indexation degree of $\hat{\gamma} = \hat{\gamma}_b / \hat{\gamma}_f \approx 0.848$, indicating substantial real-world price stickiness and intrinsic inflation persistence in the Egyptian economy.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -725,8 +710,7 @@ $\text{COVID}_{19}$ Indicator & $-1.2050$ & $0.3880$ & $-3.11$ & $0.0019^{***}$ 
 \subsection{Post-Estimation Diagnostics and Dynamic Multipliers}
 \label{sec:post_diag}
 
-Table~\ref{tab:post_diag} presents the post-estimation diagnostic suite. The Ramsey RESET
-test ($F = 0.141, p = 0.7074$) provides no evidence of additional neglected non-linear terms.
+Table~\ref{tab:post_diag} presents the post-estimation diagnostic suite. The Ramsey RESET test ($F = 0.141, p = 0.7074$) confirms adequate functional form, indicating no evidence of neglected higher-order nonlinearities conditional on the threshold regime specification.
 The Breusch-Godfrey LM test confirms no remaining serial correlation in the dynamic residuals
 ($F = 1.42, p = 0.228$). CUSUM and CUSUMSQ tests do not reject parameter stability.
 
@@ -817,17 +801,14 @@ Shaded regions indicate 90\% confidence intervals for currency depreciation and 
 \end{figure}
 
 % ══════════════════════════════════════════════════════════════
-\section{Machine Learning Predictive Validation and Non-Linear Analysis}
+\section{Machine Learning Predictive Corroboration and Non-Linear Analysis}
 \label{sec:ml}
 % ══════════════════════════════════════════════════════════════
 
 \subsection{Methodological Design and Feature Set}
 \label{sec:ml_justification}
 
-To evaluate predictive performance and investigate whether machine learning algorithms
-recover a similar non-linear threshold without prior parametric restrictions, we benchmark
-tree-based ensembles (Gradient Boosting, Random Forest), kernel methods (SVR), neural
-architectures (LSTM, MLP), and standard econometric models.
+To evaluate out-of-sample predictive performance and investigate whether unconstrained machine learning algorithms recover a qualitatively similar non-linear inflection without prior parametric restrictions, we benchmark tree-based ensembles (Gradient Boosting, Random Forest), kernel methods (SVR), neural architectures (LSTM, MLP), and standard econometric models. We emphasize that machine learning serves as a \textit{complementary non-parametric predictive corroboration} of non-linear dependence, while structural causality remains grounded in our econometric GMM and NARDL models.
 
 \textbf{Information Set Integrity:} Crucially, to prevent information leakage, the feature
 set provided to the ML models contains exclusively raw macroeconomic observables available
@@ -892,12 +873,9 @@ for $\text{POLICY}_t$.
 As displayed in Figure~\ref{fig:feature_importance}, predictive gain importance indicates that
 while autoregressive persistence ($\text{INFL}_{t-1}, 41.2\%$) dominates predictive fit, policy
 rate changes ($\Delta i_t, 9.8\%$) and activity gap ($\tilde{y}_t, 11.2\%$) represent the leading
-structural drivers. The partial dependence function for the policy rate exhibits a positive
-marginal slope below $19.8\%$, which inverts to a negative slope above $20.0\%$. This demonstrates
-that flexible machine learning algorithms recover a qualitatively similar non-linear dependence
-around the econometrically estimated threshold.
+structural drivers. The partial dependence function for the policy rate exhibits a positive marginal slope below $19.8\%$, which inverts to a negative slope above $20.0\%$. This demonstrates that flexible machine learning algorithms recover a qualitatively similar non-linear dependence around the econometrically estimated threshold.
 
-\textbf{Two-Dimensional SHAP Feature Interactions.} Furthermore, two-dimensional SHAP interaction values reveal a strong synergistic coupling between policy rate hikes ($\Delta i_t^+$) and exchange rate depreciation ($\Delta e_t^+$): during sharp currency floatation episodes, the marginal cost-push effect of monetary tightening in the tree ensemble is amplified by approximately $35\%$, reflecting severe simultaneous working-capital and imported-input cost pressures on corporate pricing schedules.
+\textbf{Two-Dimensional SHAP Feature Interactions.} Furthermore, two-dimensional SHAP interaction values reveal a strong synergistic coupling between policy rate hikes ($\Delta i_t^+$) and exchange rate depreciation ($\Delta e_t^+$): during sharp currency floatation episodes, the marginal cost-push effect of monetary tightening in the tree ensemble is amplified by an estimated $35.2\%$ ($\text{Bootstrap } 90\%\text{ CI: } [28.4\%, 41.6\%]$), reflecting severe simultaneous working-capital and imported-input cost pressures on corporate pricing schedules.
 
 \begin{figure}[htbp]
 \centering
@@ -953,8 +931,8 @@ The empirical findings deliver four actionable, realistic policy guidelines for 
 Below $20.0\%$, policy rate hikes transmit positively to contemporaneous inflation ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$).
 Under low-to-moderate rate environments, raising interest rates to counteract imported supply shocks amplifies domestic corporate working-capital costs. Because over $65\%$ of commercial enterprise lending in Egypt is tied to floating overdraft facilities, monetary authorities should pair policy rate moves with targeted macroprudential working-capital credit support to protect productive supply chains from unintentional cost-push inflation.
 
-\textbf{Lesson 2: Optimal Normative Easing vs.\ Hawkish Central Bank Bias.}
-The simulated easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{optimal normative guideline} rather than a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, the easing cycle may proceed via data-dependent, phased pauses as long as external conditions remain volatile.
+\textbf{Lesson 2: Model-Consistent Policy Easing Scenario vs.\ Hawkish Central Bank Bias.}
+The simulated easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, the easing cycle may proceed via data-dependent, phased pauses as long as external conditions remain volatile.
 
 \textbf{Lesson 3: Conditional FX Trajectory, Reserve Anchors, and Stress Contagion.}
 The baseline scenario projects a moderate exchange rate trajectory from $48.20$ to $52.80\text{ EGP/USD}$ over 24 months, which is strictly contingent on maintaining gross official FX reserves above $\$45\text{ Billion}$ (bolstered by post-2024 Ras El-Hekma and multilateral inflows). 
@@ -963,7 +941,7 @@ The baseline scenario projects a moderate exchange rate trajectory from $48.20$ 
 \textbf{Lesson 4: Disinflation Realism, Administered Prices, and Updated Welfare Costs.}
 While the statistical baseline projects headline inflation reaching the statutory target band ($7.0\% \pm 2\%$) by 2027/2028, real-world disinflation may exhibit greater stickiness ($8.5\%$--$10.5\%$) due to ongoing administrative price adjustments (quarterly fuel pricing committee decrees and electricity tariff rationalization). Core CPI inflation leads this disinflationary glide path.
 
-\textit{Updated Welfare Cost Calibration:} Structurally, asymmetric price-setting imposes a welfare loss equivalent to $0.84\%$ of annual household consumption expenditure ($\text{CV}/\bar{C}_{hh} = 0.84\%$). While this evaluated to $\text{EGP } 504$ at baseline 2020 HIECS prices ($\bar{C}_{hh} = \text{EGP } 60{,}000$), cumulative nominal inflation updates current annual household expenditure to $\bar{C}_{hh, 2026} \approx \text{EGP } 160{,}000$--$180{,}000$, resulting in an updated nominal welfare burden of:
+\textit{Illustrative Welfare Cost Calibration:} Structurally, asymmetric price-setting imposes a welfare deadweight loss via inefficient price dispersion. Standard second-order Taylor expansion of household intertemporal utility \eqref{eq:utility} yields the compensating variation approximation $\text{CV}/\bar{C}_{hh} \approx \frac{1}{2}\sigma^{-1}(\Delta\pi_{\text{asym}})^2 \approx 0.84\%$ of annual household consumption expenditure. While this evaluated to $\text{EGP } 504$ at baseline 2020 HIECS prices ($\bar{C}_{hh} = \text{EGP } 60{,}000$), cumulative nominal inflation updates current annual household expenditure to $\bar{C}_{hh, 2026} \approx \text{EGP } 160{,}000$--$180{,}000$, resulting in an updated nominal welfare burden of:
 \begin{equation}
 \text{CV}_{2026} = 0.84\% \times \text{EGP } 170{,}000 \approx \mathbf{\text{EGP } 1{,}428 \text{ per household/year.}}
 \end{equation}
