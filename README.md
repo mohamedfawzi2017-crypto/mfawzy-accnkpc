@@ -60,8 +60,8 @@ The script will automatically:
 | **Cost-Channel Slope Below Threshold ($\phi_{\text{Low}}^+$)** | **$+1.8783^{***}$** | Monetary tightening increases short-run inflation (Price Puzzle) |
 | **Cost-Channel Slope Above Threshold ($\phi_{\text{High}}^+$)** | **$+0.1232$** | Aggregate demand contraction dominates cost channel ($W=19.84^{***}$) |
 | **FX Depreciation Pass-Through ($\lambda^+$)** | **$+8.2912^{***}$** | Highly asymmetric pass-through ($\lambda^- \to 0$, $W=8.72^{***}$) |
-| **Upward Price Stickiness ($\theta^+$)** | **$0.620$** | Implied duration: **$2.63\text{ months}$** (Rockets) |
-| **Downward Price Stickiness ($\theta^-$)** | **$0.880$** | Implied duration: **$8.33\text{ months}$** (Feathers) |
+| **Upward Price Stickiness ($\theta^+$)** | **$0.548$** | Implied duration: **$2.21\text{ months}$** (Rockets) |
+| **Downward Price Stickiness ($\theta^-$)** | **$0.832$** | Implied duration: **$5.95\text{ months}$** (Feathers) |
 | **GBM Out-of-Sample Accuracy ($\text{RMSE}$)** | **$3.060\text{ pp}$** | Statistically outperforms $\text{AR}(2)$ ($\text{DM} = -3.84, p < 0.001$) |
 
 ---
