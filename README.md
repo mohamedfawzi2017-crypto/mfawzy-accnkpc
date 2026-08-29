@@ -19,8 +19,9 @@ This repository contains the complete empirical replication suite, master macroe
 
 ## 📂 Repository Contents
 
-- `run_full_paper_replication.py`: One-click master Python replication script that executes all empirical models (Hansen Threshold Estimation, Two-Step Optimal GMM, NARDL ECM, Machine Learning Tournament, SHAP value decomposition, and 24-month multi-scenario fan charts).
-- `data/Egypt_Master_Macroeconomic_Database_2005_2026.xlsx`: Master monthly dataset ($T=184$, $2011\text{M}01$--$2026\text{M}04$) containing headline/core inflation, CBE policy corridor rates, commercial bank lending spreads, official exchange rates, S&P PMI activity gaps, gross foreign reserves, Brent oil prices, and structural shock regime dummies.
+- `run_full_paper_replication.py`: One-click master Python replication script that executes all empirical models (Hansen Threshold Estimation, Two-Step Optimal GMM, NARDL ECM, Machine Learning Tournament, Blocked Time-Series Cross-Validation, and Theoretical Calvo Inversions).
+- `data/Egypt_Master_Macroeconomic_Database_2005_2026.xlsx`: Comprehensive master macroeconomic time-series database ($2005\text{M}01$--$2026\text{M}04$) with full monthly variables, raw indicators, and historical series.
+- `data/Egypt_ACC_NKPC_Monthly_Dataset_2010_2026.xlsx`: Standardized empirical estimation dataset ($2011\text{M}01$--$2026\text{M}04$, $T=184$) utilized directly by `run_full_paper_replication.py`.
 - `manuscript.tex`: Complete LaTeX master manuscript (elsarticle format).
 - `theoretical_derivation.md`: Complete step-by-step mathematical micro-foundations of the Hybrid ACC-NKPC model.
 
