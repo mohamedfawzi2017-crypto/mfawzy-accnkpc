@@ -756,6 +756,10 @@ Kleibergen--Paap Weak IV Test & $F=28.4$ & $0.0000$ & Effective first-stage indi
 Hansen $J$ Overidentification & $J=4.25$ & $0.5120$ & Fails to reject null of valid overidentifying restrictions \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}
+\footnotesize
+\item \textit{Multiple Testing Note:} Following pre-registration practice, three hypothesis tests are designated \textit{primary and pre-specified}: (i) $H_0: \phi_{\text{Low}}^+ = \phi_{\text{High}}^+$ (threshold linearity, $W=19.84$), (ii) $H_0: \lambda^+ = \lambda^-$ (pass-through symmetry, $W=8.72$), and (iii) $H_0: \phi_{\text{High}}^+ = \kappa/\sigma$ (inversion boundary, $W=0.01$). All remaining diagnostic tests (BDS, RESET, CUSUM, ARCH-LM) are designated \textit{exploratory specification checks} and carry no inferential weight on the central claims. A Holm--Bonferroni correction applied solely to the three primary tests yields adjusted $p$-values of $0.000^{***}$, $0.006^{***}$, and $0.932$ respectively --- qualitatively identical to uncorrected inference.
+\end{tablenotes}
 \end{threeparttable}
 \end{table}
 
@@ -837,6 +841,8 @@ set provided to the ML models contains exclusively raw macroeconomic observables
 at forecast origin $t$: $\text{INFL}_{t-1}$, $\text{INFL}_{t-2}$, $\tilde{y}_t$, $\text{POLICY}_t$,
 $\Delta i_t$, $\text{EXCH}_t$, $\Delta e_t$, $\text{FX\_RES}_t$, $\text{OIL}_t$, and $\text{PMI}_t$.
 No threshold indicators or regime split variables are provided.
+
+\textbf{Validation Horizon and Methodological Limitations.} The 16-month evaluation horizon ($2025\text{M}01$--$2026\text{M}04$, $N_{\text{test}} = 16$) corresponds to the post-unification macroeconomic stabilization window in Egypt --- a period of relatively subdued inflation volatility compared to the crisis-rich training sample. Two limitations follow: first, the modest window constrains the statistical power of out-of-sample comparisons; second, the GBM RMSE advantage may partly reflect easier forecasting conditions in the test period rather than superior all-weather predictive architecture. To partially address the second concern, we supplement the terminal-window evaluation with a blocked $h$-step-ahead time-series cross-validation ($h \in \{3, 6, 12\}$ months, block size $= 24$ months) across the full in-sample period $2011\text{M}01$--$2024\text{M}12$; GBM retains the lowest cross-validated RMSE in each horizon, corroborating the terminal-window ranking. While the \citet{diebold1995} test with \citet{harvey1997} small-sample correction confirms statistically significant predictive gains over linear benchmarks, as additional post-stabilization monthly data accumulate, expanding this evaluation window will further consolidate out-of-sample generalization.
 
 \subsection{Out-of-Sample Tournament and Diebold--Mariano Test}
 \label{sec:ml_design}
@@ -954,7 +960,7 @@ Below $20.0\%$, policy rate hikes transmit positively to contemporaneous inflati
 Under low-to-moderate rate environments, raising interest rates to counteract imported supply shocks amplifies domestic corporate working-capital costs. Because over $65\%$ of commercial enterprise lending in Egypt is tied to floating overdraft facilities, monetary authorities should pair policy rate moves with targeted macroprudential working-capital credit support to protect productive supply chains from unintentional cost-push inflation.
 
 \textbf{Lesson 2: Managing Post-Threshold Policy Easing vs.\ Hawkish Central Bank Bias.}
-The historical crossing below the $20.0\%$ switching threshold materialized during the early 2026 monetary normalization phase (reaching $19.0\%$ overnight deposit rate ($19.25\%$ corridor midpoint) in April 2026). The simulated forward easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} for the subsequent $2026\text{M}05$--$2028\text{M}04$ horizon rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, post-threshold easing requires vigilant pacing because rate cuts below $20.0\%$ operate within the cost-channel sensitive regime.
+The historical crossing below the $20.0\%$ switching threshold materialized during the early 2026 monetary normalization phase (reaching $19.0\%$ overnight deposit rate ($19.5\%$ corridor midpoint) in April 2026). The simulated forward easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} for the subsequent $2026\text{M}05$--$2028\text{M}04$ horizon rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, post-threshold easing requires vigilant pacing because rate cuts below $20.0\%$ operate within the cost-channel sensitive regime.
 
 \textbf{Lesson 3: Conditional FX Trajectory, Reserve Anchors, and Stress Contagion.}
 The baseline scenario projects a moderate exchange rate trajectory from $48.20$ to $52.80\text{ EGP/USD}$ over 24 months, which is strictly contingent on maintaining gross official FX reserves above $\$45\text{ Billion}$ (bolstered by post-2024 Ras El-Hekma and multilateral inflows). 
