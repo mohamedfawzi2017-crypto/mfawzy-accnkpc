@@ -714,14 +714,17 @@ $\tilde{y}_t$ (Hamilton Activity Gap $\kappa$) & $0.1910$ & $0.0680$ & $2.81$ & 
 $\text{Buff}_t$ (FX Buffer $\eta$) & $-0.1700$ & $0.1980$ & $-0.86$ & $0.3900$ \\
 $\text{COVID}_{19}$ Indicator & $-1.2050$ & $0.3880$ & $-3.11$ & $0.0019^{***}$ \\
 \midrule
-\multicolumn{5}{l}{\textit{Panel C: Formal Structural Wald Hypothesis Tests}} \\[2pt]
+\multicolumn{5}{l}{\textit{Panel C: Proposition 2 Net Transmission Derivatives \& Hypothesis Tests}} \\[2pt]
+\multicolumn{2}{l}{Low Regime Net Derivative: $\left.\frac{\partial\pi_t}{\partial i_t}\right|_{\text{Low}} = \phi_{\text{Low}}^+ - \frac{\kappa}{\sigma}$} & $\mathbf{+1.7639}$ & $t = 4.63$ & $\mathbf{0.0000^{***}}$ \\
+\multicolumn{2}{l}{High Regime Net Derivative: $\left.\frac{\partial\pi_t}{\partial i_t}\right|_{\text{High}} = \phi_{\text{High}}^+ - \frac{\kappa}{\sigma}$} & $+0.0088$ & $t = 0.09$ & $0.9317$ \\
 \multicolumn{3}{l}{Wald Test for Cost-Channel Linearity: $H_0: \phi_{\text{Low}}^{+} = \phi_{\text{High}}^{+}$} & $W = 19.84$ & $p = 0.0000^{***}$ \\
+\multicolumn{3}{l}{Wald Test for Disinflation Inversion Boundary: $H_0: \phi_{\text{High}}^{+} = \frac{\kappa}{\sigma}$} & $W = 0.01$ & $p = 0.9317$ \\
 \multicolumn{3}{l}{Wald Test for Pass-Through Symmetry: $H_0: \lambda^{+} = \lambda^{-}$} & $W = 8.72$ & $p = 0.0031^{***}$ \\
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
 \footnotesize
-\item Standard errors are computed using Newey--West HAC covariance matrices. Threshold specification in Panel B controls for forward expectations $\mathbb{E}_t[\pi_{t+1}]$ and backward persistence $\pi_{t-1}$ as estimated in Panel A. Instruments: $Z_t = \{\pi_{t-2}$, $\pi_{t-3}$, $\tilde{y}_{t-1}$, $\Delta\text{FFR}_{t-1}$, $\Delta\ln\text{OIL}_{t-1}$, $\text{Spread}_{t-1}$, $\text{IMF Dummies}\}$. Kleibergen--Paap $F = 28.4$.
+\item Standard errors are computed using Newey--West HAC covariance matrices. Threshold specification in Panel B controls for forward expectations $\mathbb{E}_t[\pi_{t+1}]$ and backward persistence $\pi_{t-1}$ as estimated in Panel A. Net marginal transmission derivatives $\partial\pi_t/\partial i_t = \phi^+ - \kappa/\sigma$ evaluate Proposition 2 at baseline calibration ($\kappa/\sigma = 0.1144$), with delta-method standard errors. In the high regime, the net derivative drops to $+0.0088 \approx 0$, failing to reject the inversion boundary $H_0: \phi_{\text{High}}^+ = \kappa/\sigma$ ($p=0.9317$) and neutralizing the Price Puzzle. Instruments: $Z_t = \{\pi_{t-2}$, $\pi_{t-3}$, $\tilde{y}_{t-1}$, $\Delta\text{FFR}_{t-1}$, $\Delta\ln\text{OIL}_{t-1}$, $\text{Spread}_{t-1}$, $\text{IMF Dummies}\}$. Kleibergen--Paap $F = 28.4$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -950,8 +953,8 @@ The empirical findings deliver four actionable, realistic policy guidelines for 
 Below $20.0\%$, policy rate hikes transmit positively to contemporaneous inflation ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$).
 Under low-to-moderate rate environments, raising interest rates to counteract imported supply shocks amplifies domestic corporate working-capital costs. Because over $65\%$ of commercial enterprise lending in Egypt is tied to floating overdraft facilities, monetary authorities should pair policy rate moves with targeted macroprudential working-capital credit support to protect productive supply chains from unintentional cost-push inflation.
 
-\textbf{Lesson 2: Model-Consistent Policy Easing Scenario vs.\ Hawkish Central Bank Bias.}
-The simulated easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, the easing cycle may proceed via data-dependent, phased pauses as long as external conditions remain volatile.
+\textbf{Lesson 2: Managing Post-Threshold Policy Easing vs.\ Hawkish Central Bank Bias.}
+The historical crossing below the $20.0\%$ switching threshold materialized during the early 2026 monetary normalization phase (reaching $18.0\%$ in April 2026). The simulated forward easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} for the subsequent $2026\text{M}05$--$2028\text{M}04$ horizon rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, post-threshold easing requires vigilant pacing because rate cuts below $20.0\%$ operate within the cost-channel sensitive regime.
 
 \textbf{Lesson 3: Conditional FX Trajectory, Reserve Anchors, and Stress Contagion.}
 The baseline scenario projects a moderate exchange rate trajectory from $48.20$ to $52.80\text{ EGP/USD}$ over 24 months, which is strictly contingent on maintaining gross official FX reserves above $\$45\text{ Billion}$ (bolstered by post-2024 Ras El-Hekma and multilateral inflows). 
@@ -1130,9 +1133,7 @@ incorporating idiosyncratic cost shocks ($\nu_{jt}$), smooth endogenous mass agg
 ($\omega_t$), backward indexation ($\gamma$), and working-capital borrowing constraints ($\chi$),
 the model provides a structural explanation consistent with the empirical Price Puzzle in credit-dependent open economies.
 
-The Threshold Inversion Proposition establishes that interest rate hikes increase inflation
-when $i_{t-1} \le 20.0\%$ ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$), while aggregate demand
-contraction re-establishes disinflationary transmission above $20.0\%$. Exchange rate pass-through is strongly asymmetric ($\lambda^{+} = 8.2912, p = 0.002$), while calibrated consumption-equivalent welfare costs indicate a non-trivial deadweight burden of $0.84\%$ of annual household consumption expenditure. Machine learning models provide complementary non-parametric corroboration ($\text{RMSE}=3.060\text{ pp}$) recovering an inflection around $20.0\%$. These findings deliver actionable roadmaps for central bank monetary policy sequencing, exchange-rate anchor preservation, and macroprudential working-capital credit management.
+The Threshold Inversion Proposition establishes that interest rate hikes increase inflation when $i_{t-1} \le 20.0\%$ ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$), whereas above $20.0\%$, the cost channel weakens substantially and is effectively neutralized ($\left.\frac{\partial\pi_t}{\partial i_t}\right|_{\text{High}} \to 0, p = 0.932$), removing the short-run Price Puzzle. Exchange rate pass-through is strongly asymmetric ($\lambda^{+} = 8.2912, p = 0.002$), while calibrated consumption-equivalent welfare costs indicate a non-trivial deadweight burden of $0.84\%$ of annual household consumption expenditure. Machine learning models provide complementary non-parametric corroboration ($\text{RMSE}=3.060\text{ pp}$) recovering an inflection around $20.0\%$. These findings deliver actionable roadmaps for central bank monetary policy sequencing, exchange-rate anchor preservation, and macroprudential working-capital credit management.
 
 \section*{Data Availability Statement}
 All monthly datasets, replication scripts, and empirical routines are available
