@@ -1,0 +1,38 @@
+Prof. Nicholas Apergis
+Editor-in-Chief
+The Journal of Economic Asymmetries
+Elsevier
+
+Date: August 29, 2026
+
+Dear Professor Apergis and Editorial Board Members,
+
+Subject: Submission of Original Research Manuscript
+
+I am pleased to submit our original research manuscript entitled:
+"Asymmetric Cost-Channel Monetary Transmission and Policy-Rate Thresholds: Evidence from Egypt"
+for consideration for publication as a regular research article in The Journal of Economic Asymmetries.
+
+Following our previous successful contribution published in your esteemed journal, this study addresses a central, unresolved puzzle in open-economy monetary economics: the empirical "Price Puzzle" and its asymmetric structural inversion across monetary regimes.
+
+Key Contributions of this Manuscript:
+1. Theoretical Micro-foundations: We derive a micro-founded Hybrid Asymmetric Cost-Channel New Keynesian Phillips Curve (ACC-NKPC) integrating working-capital credit frictions with a continuous smooth aggregation function, overcoming standard discontinuity issues in discrete menu-cost models.
+2. Endogenous Threshold Inversion: Utilizing a comprehensive monthly dataset (2011M01–2026M04, T=184) from the Central Bank of Egypt, two-step optimal GMM and Hansen threshold estimation reveal an endogenous switching boundary at i* = 20.00%. Below 20.0%, monetary tightening transmits positively to inflation (+1.88 pp per 100 bps hike, p < 0.001) due to acute working-capital cost dominance. Above 20.0%, the cost channel is neutralized, re-establishing classical disinflationary demand transmission.
+3. Asymmetric Pass-Through & Welfare Loss: We document profound exchange-rate pass-through asymmetry (+6.20 pp cumulative inflation surge per 10% depreciation, versus near-zero pass-through for appreciations). The calibrated welfare deadweight loss amounts to 0.84% of annual household consumption expenditure (EGP 1,428 per household/year, aggregating to EGP 38.5–40.0 Billion annually nationwide).
+4. Machine Learning & Replication Integrity: Tree-based ensembles (Gradient Boosting, Random Forest) provide non-parametric out-of-sample corroboration, recovering an inflection near 20.0%. The complete replication suite and master dataset are made publicly available on GitHub.
+
+Compliance and Declarations:
+- This manuscript is original, has not been published previously, and is not currently under consideration for publication elsewhere.
+- All authors have approved the manuscript and agree with its submission to The Journal of Economic Asymmetries.
+- No competing financial or non-financial interests exist.
+- We choose the traditional Subscription publishing model (No publication charges / Zero APC).
+
+Thank you very much for your time, consideration, and handling of our manuscript. We look forward to receiving the reviewers' constructive evaluations.
+
+Sincerely,
+
+Mohamed Fawzy AbdulAziz
+Corresponding Author
+Research Department, Information and Decision Support Center (IDSC), The Egyptian Cabinet, Cairo, Egypt
+Department of Economics, Faculty of Economics and Political Science, Cairo University, Giza, Egypt
+Email: mohamed.abdulaziz@idsc.gov.eg

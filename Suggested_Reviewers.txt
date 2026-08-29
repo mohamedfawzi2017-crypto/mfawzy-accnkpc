@@ -1,0 +1,27 @@
+SUGGESTED REVIEWERS FOR:
+"Asymmetric Cost-Channel Monetary Transmission and Policy-Rate Thresholds: Evidence from Egypt"
+Journal: The Journal of Economic Asymmetries (Elsevier)
+
+1. Prof. Simplice A. Asongu
+   Institution: African Governance and Development Institute (AGDI) & University of South Africa
+   Expertise: Asymmetric macroeconomic shocks, monetary policy transmission, African and emerging market economies.
+   Reason: Published leading recent papers on macroeconomic asymmetries in The Journal of Economic Asymmetries (2026).
+   Email: asongusimplice@yahoo.com / asongus@afridev.org
+
+2. Prof. Peter Tillmann
+   Institution: Department of Economics, Justus-Liebig-University Giessen, Germany
+   Expertise: Cost channel of monetary transmission, New Keynesian Phillips Curves, monetary policy puzzles.
+   Reason: Authored foundational papers on the econometric identification of the cost channel (JEDC, 2008).
+   Email: peter.tillmann@wirtschaft.uni-giessen.de
+
+3. Prof. Yongcheol Shin
+   Institution: Department of Economics and Related Studies, University of York, United Kingdom
+   Expertise: Nonlinear ARDL (NARDL), asymmetric cointegration, time-series econometrics.
+   Reason: Co-originator of the NARDL econometric framework (Shin et al., 2014).
+   Email: yongcheol.shin@york.ac.uk
+
+4. Prof. Amalia Lopez-Villavicencio
+   Institution: EconomiX, University of Paris Nanterre, France
+   Expertise: Asymmetric exchange rate pass-through, emerging market macroeconomics, threshold dynamics.
+   Reason: Published seminal works on asymmetric exchange rate pass-through (Journal of Macroeconomics, 2012).
+   Email: amalia.lopez-villavicencio@parisnanterre.fr

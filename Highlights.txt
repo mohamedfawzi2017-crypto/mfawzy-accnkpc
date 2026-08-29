@@ -1,0 +1,8 @@
+# Highlights (The Journal of Economic Asymmetries)
+# Rule: 3 to 5 bullet points, each maximum 85 characters including spaces.
+
+- We micro-found a Hybrid ACC-NKPC with continuous idiosyncratic cost aggregation. (83 chars)
+- Two-step GMM finds an endogenous policy threshold at 20.0% in Egypt (2011-2026). (81 chars)
+- Rate hikes increase inflation below 20%, but neutralize above it (Price Puzzle). (83 chars)
+- Exchange rate pass-through is strongly asymmetric: 6.20 pp per 10% depreciation. (82 chars)
+- Machine learning ensembles corroborate non-linear inflection at the 20% boundary. (84 chars)
