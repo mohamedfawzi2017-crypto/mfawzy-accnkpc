@@ -407,7 +407,12 @@ When $\phi^+ > \kappa/\sigma$, the marginal cost push from working-capital finan
 \phi_\pi > 1 - \frac{\phi^{+} \sigma}{\kappa}
 \label{eq:modified_taylor}
 \end{equation}
-In the low-rate regime ($i_{t-1} \le 20.0\%$), the elevated cost-channel slope ($\phi_{\text{Low}}^+ = 1.8783$) narrows the determinacy region, requiring vigilant coordination. Conversely, in the high-rate regime ($i_{t-1} > 20.0\%$), the sharp contraction of the cost channel ($\phi_{\text{High}}^+ \to 0.1232$) ensures that the classical Taylor condition $\phi_\pi > 1$ readily guarantees unique, stable rational-expectations equilibrium dynamics.
+Evaluating the modified determinacy boundary \eqref{eq:modified_taylor} at baseline calibration yields:
+\begin{equation}
+\phi_{\pi, \text{Low}} > 1 - \frac{1.8783 \times 1.67}{0.1910} = \mathbf{-15.42}, \quad \text{versus} \quad \phi_{\pi, \text{High}} > 1 - \frac{0.1232 \times 1.67}{0.1910} \approx \mathbf{-0.08},
+\label{eq:numerical_determinacy}
+\end{equation}
+illustrating that while the classical Taylor principle ($\phi_\pi > 1$) is sufficient for Blanchard--Kahn determinacy in the high-rate regime, the presence of the severe cost channel below the threshold decouples standard uniqueness bounds, requiring monetary authorities to place greater structural weight on credit risk intermediation.
 
 % ══════════════════════════════════════════════════════════════
 \section{Data and Pre-Estimation Econometric Diagnostics}
@@ -729,6 +734,8 @@ $\text{COVID}_{19}$ Indicator & $-1.2050$ & $0.3880$ & $-3.11$ & $0.0019^{***}$ 
 \end{threeparttable}
 \end{table}
 
+\textbf{Cross-Country Comparative Benchmark for Pass-Through Elasticity ($\lambda^+$).} The cumulative 6-month exchange rate pass-through elasticity ($\approx 0.62$, generating a $+6.20\text{ pp}$ headline inflation surge per $10\%$ currency depreciation) reflects an exceptionally elevated pass-through environment compared to other emerging markets---such as Turkey ($\approx 0.35$--$0.45$; e.g., \citealp{leigh2002}) and Latin American inflation targeters ($\approx 0.10$--$0.25$; e.g., \citealp{delatte2012}). This heightened vulnerability stems directly from Egypt's high structural import content ($\alpha = 0.35$) coupled with severe downward price rigidity ($d^- = 5.95\text{ months}$).
+
 \subsection{Post-Estimation Diagnostics and Dynamic Multipliers}
 \label{sec:post_diag}
 
@@ -957,7 +964,7 @@ The empirical findings deliver four actionable, realistic policy guidelines for 
 
 \textbf{Lesson 1: Navigating the $i^{*}=20.0\%$ Threshold Boundary and Credit Frictions.}
 Below $20.0\%$, policy rate hikes transmit positively to contemporaneous inflation ($\phi_{\text{Low}}^{+} = 1.8783, p < 0.001$).
-Under low-to-moderate rate environments, raising interest rates to counteract imported supply shocks amplifies domestic corporate working-capital costs. Because over $65\%$ of commercial enterprise lending in Egypt is tied to floating overdraft facilities, monetary authorities should pair policy rate moves with targeted macroprudential working-capital credit support to protect productive supply chains from unintentional cost-push inflation.
+Under low-to-moderate rate environments, raising interest rates to counteract imported supply shocks amplifies domestic corporate working-capital costs. Because over $65\%$ of commercial enterprise lending in Egypt is tied to floating overdraft facilities, monetary authorities should pair policy rate moves with targeted macroprudential working-capital credit support to protect productive supply chains from unintentional cost-push inflation. Analytically, introducing a targeted macroprudential working-capital subsidy wedge $\tau_t \in [0, 1)$ modifies the corporate effective borrowing rate to $i_t^{L, \text{eff}} = (1 - \tau_t)i_t + \text{Spread}_t$. Setting $\tau_t^* = 1 - \frac{\kappa}{\sigma \phi^+}$ completely neutralizes the short-run Price Puzzle ($\partial \pi_t / \partial i_t = 0$), demonstrating that targeted preferential credit schemes (e.g., subsidized manufacturing facilities) insulate real supply chains without requiring the central bank to abandon its aggregate disinflationary stance.
 
 \textbf{Lesson 2: Managing Post-Threshold Policy Easing vs.\ Hawkish Central Bank Bias.}
 The historical crossing below the $20.0\%$ switching threshold materialized during the early 2026 monetary normalization phase (reaching $19.0\%$ overnight deposit rate ($19.5\%$ corridor midpoint) in April 2026). The simulated forward easing path of $150$--$200$ bps per quarter in Figure~\ref{fig:multi_panel_forecast} represents an \textit{illustrative model-consistent macroeconomic scenario} for the subsequent $2026\text{M}05$--$2028\text{M}04$ horizon rather than an unconstrained normative central bank optimization or a deterministic forecast of Monetary Policy Committee (MPC) voting behavior. Historically, the CBE maintains a cautious, hawkish stance to ensure positive real interest rates ($+200$ to $+400$ bps) to anchor domestic deposits and discourage dollarization. In practice, post-threshold easing requires vigilant pacing because rate cuts below $20.0\%$ operate within the cost-channel sensitive regime.
@@ -1256,6 +1263,10 @@ H{\"u}lsewig, O., Mayer, E., Wollmersh{\"a}user, T., 2009. The cost channel of
 monetary transmission in the euro area. \textit{Journal of Macroeconomics},
 31(2), 246--258.
 
+\bibitem[Leigh and Rossi(2002)]{leigh2002}
+Leigh, D., Rossi, M., 2002. Exchange rate pass-through in Turkey.
+\textit{IMF Working Paper}, WP/02/204.
+
 \bibitem[Lucas(1987)]{lucas1987}
 Lucas, R.E., 1987. \textit{Models of Business Cycles}. Basil Blackwell, Oxford.
 
@@ -1433,6 +1444,13 @@ $R^2$ & $0.7840$ & $0.9554$ & $0.9560$ & $0.9548$ \\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
+
+The estimated error-correction coefficient ($\lambda_{\text{ECT}} = -0.3210, p < 0.0001$) implies a rapid disinflationary adjustment speed of $32.1\%$ per month, translating to an empirical half-life of disequilibrium absorption of:
+\begin{equation}
+\text{Half-Life} = \frac{\ln(0.5)}{\ln(1 - 0.3210)} \approx \mathbf{1.79 \text{ months}} \quad (\approx 7.8 \text{ weeks}),
+\label{eq:half_life}
+\end{equation}
+confirming that transitory monetary and cost-push deviations revert to their long-run asymmetric steady state in under two months.
 
 \clearpage
 \section{Threshold Sensitivity Matrix and 24-Month Scenario Projections}
